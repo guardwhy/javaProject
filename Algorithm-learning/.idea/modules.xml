@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01-TimeComplexity/01-TimeComplexity.iml" filepath="$PROJECT_DIR$/01-TimeComplexity/01-TimeComplexity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02-Arrays/02-Arrays.iml" filepath="$PROJECT_DIR$/02-Arrays/02-Arrays.iml" />
+    </modules>
+  </component>
+</project>
