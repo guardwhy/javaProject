@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Array/Array.iml" filepath="$PROJECT_DIR$/Array/Array.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ObjectOriented/ObjectOriented.iml" filepath="$PROJECT_DIR$/ObjectOriented/ObjectOriented.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ProgramingBasic/ProgramingBasic.iml" filepath="$PROJECT_DIR$/ProgramingBasic/ProgramingBasic.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Study01/programingBasic.iml" filepath="$PROJECT_DIR$/Study01/programingBasic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10_Thread/10_Thread.iml" filepath="$PROJECT_DIR$/10_Thread/10_Thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1_ProgramingBasic/1_ProgramingBasic.iml" filepath="$PROJECT_DIR$/1_ProgramingBasic/1_ProgramingBasic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2_Array/2_Array.iml" filepath="$PROJECT_DIR$/2_Array/2_Array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3_ObjectOriented_01/3_ObjectOriented_01.iml" filepath="$PROJECT_DIR$/3_ObjectOriented_01/3_ObjectOriented_01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/4_ObjectOriented_02/4_ObjectOriented_02.iml" filepath="$PROJECT_DIR$/4_ObjectOriented_02/4_ObjectOriented_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/5_String/5_String.iml" filepath="$PROJECT_DIR$/5_String/5_String.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6_Genericity/6_Genericity.iml" filepath="$PROJECT_DIR$/6_Genericity/6_Genericity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/7_Collection/7_Collection.iml" filepath="$PROJECT_DIR$/7_Collection/7_Collection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/8_Map/8_Map.iml" filepath="$PROJECT_DIR$/8_Map/8_Map.iml" />
+      <module fileurl="file://$PROJECT_DIR$/9_Exception/9_Exception.iml" filepath="$PROJECT_DIR$/9_Exception/9_Exception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/javaSE.iml" filepath="$PROJECT_DIR$/.idea/javaSE.iml" />
     </modules>
   </component>
 </project>
