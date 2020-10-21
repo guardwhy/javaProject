@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 实体类接口的类全名 -->
+<mapper namespace="cn.guardwhy.dao.UserMapper">
+    <!--创建User的映射-->
+    <resultMap id="userMap" type="user">
+        <!--映射主键-->
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+    </resultMap>
+
+    <!--1.2创建UserInfo的映射-->
+    <resultMap id="userInfoMap" type="userInfo">
+        <!--映射主键-->
+        <id property="id" column="id"/>
+        <result property="height" column="height"/>
+        <result property="weight" column="weight"/>
+        <result property="married" column="married"/>
+    </resultMap>
+
+    <!--1.3 创建一对一的关联extends，将上面的映射关系复制过来-->
+    <resultMap id="userAndInfoMap" type="user" extends="userMap">
+        <!--一对一关联-->
+        <association property="userInfo" resultMap="userInfoMap"/>
+    </resultMap>
+
+    <!--1.4 使用上面的一对一的映射-->
+    <select id="findUserAndInfo" resultMap="userAndInfoMap" parameterType="int">
+        select * from user u inner join user_info i on u.id = i.id where u.id = #{id}
+    </select>
+
+    <!--2.1创建订单的映射-->
+    <resultMap id="orderMap" type="orderForm">
+        <id property="oid" column="oid"/>
+        <result property="userId" column="user_id"/>
+        <result property="number" column="number"/>
+        <result property="createTime" column="create_time"/>
+        <result property="note" column="note"/>
+    </resultMap>
+
+    <!--2.2 配置一对多的映射-->
+    <resultMap id="userOrdersMap" type="user" extends="userMap">
+        <!--
+           property: 多方的属性名
+           javaType：多方的属性类型
+           ofType: 集合中每个元素的类型
+           resultMap：多方映射
+       -->
+        <collection property="orders" javaType="list" ofType="orderForm" resultMap="orderMap"/>
+   </resultMap>
+
+    <!--2.3 一对多的关联查询-->
+   <select id="findUserAndOrders" resultMap="userOrdersMap" parameterType="int">
+       select * from user u inner join order_form o on u.id = o.user_id where u.id=#{id}
+   </select>
+
+    <!--3.1 配置角色的映射-->
+    <resultMap id="roleMap" type="role">
+        <id property="roleId" column="role_id"/>
+        <id property="roleName" column="role_name"/>
+        <id property="roleDetail" column="role_Detail"/>
+    </resultMap>
+
+    <!--3.2 配置多对多的映射-->
+    <resultMap id="userRolesMap" type="user" extends="userMap">
+        <!--
+           property: 多方的属性名
+           javaType：多方的属性类型
+           ofType: 集合中每个元素的类型
+           resultMap：多方映射
+       -->
+        <collection property="roles" javaType="list" ofType="role" resultMap="roleMap"/>
+    </resultMap>
+
+    <!--3.3 查询某个用户对应的角色-->
+    <select id="findRolesByUserId" resultMap="userRolesMap" parameterType="int">
+        select *from user u inner join user_role ur on u.id = ur.user_id
+        inner join role r on r.role_id = ur.role_id where u.id = #{id};
+    </select>
+</mapper>

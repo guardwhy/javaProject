@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <environments default="default">
+        <!--环境变量-->
+        <environment id="default">
+            <!--事务管理器：由JDBC管理事务 -->
+            <transactionManager type="JDBC"/>
+            <!--数据源配置信息：POOLED 使用连接池 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 加载其他的映射文件 -->
+    <mappers>
+        <mapper resource="cn/guardwhy/dao/UserMapper.xml"/>
+    </mappers>
+</configuration>

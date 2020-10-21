@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--实体类的映射文件 namespace 指定接口的类全名-->
+<mapper namespace="cn.guardwhy.dao.UserMapper">
+    <!--
+    id: 接口中方法的名字
+    resultType：返回的实体类的类型,类全名
+    -->
+    <select id="findUserById" resultType="user" parameterType="Integer">
+        select * from user where id = #{id}
+    </select>
+
+    <!--
+    通过名字模糊查询
+    ${value}: 字符串拼接，使用$. 如果是简单类型：(8种基本类型+String类型)，这里变量名只能是value
+    -->
+    <select id="findUsersByName" parameterType="String" resultType="user">
+        select * from user where username like '%${value}%'
+    </select>
+
+    <!--
+        添加用户
+        因为增删改没有查询的结果集，所以不用配置resultType。有返回值，返回影响的行数。
+     -->
+    <insert id="addUser" parameterType="user">
+        insert into user values (null, #{username},#{birthday},#{sex},#{address})
+        <!--
+            keyColumn:主键在表中对应的列名
+            keyProperty:主键在实体类中对应的属性名
+            resultType:主键的数据类型
+            order:
+                BEFORE: 在添加语句前执行查询主键的语句,AFTER: 在添加语句后执行查询主键的语句.
+        -->
+        <selectKey keyColumn="id" keyProperty="id" resultType="int" order="AFTER">
+             select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <!--修改用户-->
+    <update id="updateUser" parameterType="user">
+        update user set username=#{username}, birthday=#{birthday}, sex=#{sex}, address=#{address} where id = #{id}
+    </update>
+
+    <!--删除用户-->
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+
+    <!--pojo包装类,多条件查询-->
+    <select id="findUsersByCondition" parameterType="queryVo" resultType="user">
+        select * from user where username like '%${user.username}%' and birthday between #{start} and #{end}
+    </select>
+
+    <!--统计用户表中某种性别的数量-->
+    <select id="getAmountBySex" resultType="int" parameterType="String" >
+        select count(*) from user where sex=#{sex};
+    </select>
+
+
+    <!-- 1. 定义映射 id: 映射的名字 type:实体类 -->
+    <resultMap id="userMap" type="user">
+        <!--id表示定义主键列 property: 实体类中属性名 column: 表中主键列 -->
+        <id property="id" column="id"/>
+        <!--result 定义普通列和Java实体类中属性对应关系-->
+        <result property="username" column="user_name"/>
+    </resultMap>
+    <!-- 2.通过id查询user2表-->
+    <select id="findUser2ById" resultMap="userMap" parameterType="int">
+        select * from user2 where id = #{id}
+    </select>
+</mapper>

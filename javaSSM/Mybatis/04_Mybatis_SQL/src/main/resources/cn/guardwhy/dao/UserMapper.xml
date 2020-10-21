@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 实体类的映射文件namespace 指定接口的类全名 -->
+<mapper namespace="cn.guardwhy.dao.UserMapper">
+    <!--1.多条件查询-->
+    <select id="findUserByNameAndSex" resultType="user" parameterType="user">
+        select * from user
+        <where>
+            <!-- 如果username不为空，而且不为空字符串，则做为查询的条件-->
+            <if test="username!=null and username!=''">
+                username like '%${username}%'
+            </if>
+            <if test="sex!=null and sex!=''">
+                and sex= #{sex}
+            </if>
+        </where>
+    </select>
+
+    <!--更新操作-->
+    <update id="updateUser" parameterType="user">
+        update user
+        <set>
+            <if test="username!=null and username!=''">
+                username = #{username},
+            </if>
+            <if test="sex!=null and sex!=''">
+                sex=#{sex}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <!--批量添加用户-->
+    <insert id="addUsers" parameterType="list">
+        insert into user values
+        <!--
+        collection:两个取值：list 表示集合 array 表示数组
+        item:集合中每个变量名字
+        separator:每次遍历后添加分隔符
+        -->
+        <foreach collection="list" item="user" separator=",">
+            (null,#{user.username},#{user.birthday}, #{user.sex}, #{user.address})
+        </foreach>
+    </insert>
+
+    <!--批量删除用户-->
+    <delete id="deleteUsers" parameterType="list">
+        delete from user where id in
+        <foreach collection="array" open="(" item="id" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--定义一个可以重用的代码块-->
+    <sql id="conditionSql">
+        <where>
+            <if test="username!=null and username!=''">
+                username like '%${username}%'
+            </if>
+            <if test="minDate!=null and minDate!=''">
+                and birthday &gt;= #{minDate}
+            </if>
+            <if test="maxDate!=null and maxDate!=''">
+                and birthday &lt;= #{maxDate}
+            </if>
+        </where>
+    </sql>
+
+    <!--
+    根据条件查询多个用户 map有三个键：username, minDate, maxDate
+    -->
+    <select id="findUserByCondition" parameterType="map" resultType="user">
+        select * from user
+        <!-- 引用以上代码块-->
+        <include refid="conditionSql"/>
+    </select>
+
+    <select id="findUserCount" parameterType="map" resultType="int">
+        select count(*) from user
+        <!-- 引用以上代码块-->
+        <include refid="conditionSql"></include>
+    </select>
+</mapper>

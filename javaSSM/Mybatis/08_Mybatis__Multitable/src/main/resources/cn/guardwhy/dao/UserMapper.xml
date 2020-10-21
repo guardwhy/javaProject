@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 实体类接口的类全名 -->
+<mapper namespace="cn.guardwhy.dao.UserMapper">
+    <!--当前的映射文件中所有的查询操作使用缓存-->
+    <!--<cache/>-->
+    <!--<select id="findAllUserInfo" resultType="userInfo">
+        select * from user_info
+    </select>-->
+</mapper>

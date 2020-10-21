@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+实体类的映射文件
+namespace 指定接口的类全名
+-->
+<mapper namespace="cn.guardwhy.dao.UserMapper">
+    <!--
+    查询语句
+    id: 接口中方法的名字
+    resultType：返回的实体类的类型,类全名
+    -->
+    <select id="findAllUsers" resultType="cn.guardwhy.enty.User">
+        select * from user
+    </select>
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--在内部配置属性：先读取内部的属性,再读取外部的属性,外部的会覆盖内部的,最后外部的属性起作用-->
+    <properties resource="db.properties">
+        <property name="jdbc.username" value="root"/>
+        <property name="jdbc.password" value="root"/>
+    </properties>
+
+    <!--定义实体类别名-->
+    <typeAliases>
+        <!--
+        package指定包名
+        1. 自动将这个包下所有的实体类定义别名，别名就是类的名字。(在日志输出中会有乱码，不用理会，不影响使用，这是mybatis的bug)
+        2. 如果有多个子包，只需要指定父包即可。
+        3. 可以使用多个package标签，指定不同的包名
+        -->
+        <package name="cn.guardwhy.domain"/>
+    </typeAliases>
+
+    <!-- 一个核心配置文件，可以配置多个运行环境，default默认使用哪个运行环境 -->
+    <environments default="default">
+        <!-- 其中的一个运行环境，通过id来进行标识-->
+        <environment id="default">
+            <!--
+            事务管理器type的取值：
+            1. JDBC：由JDBC进行事务的管理
+            2. MANAGED：事务由容器来管理，后期学习Spring框架的时候，所有的事务由容器管理
+            -->
+            <transactionManager type="JDBC"/>
+            <!--
+            数据源：
+            1. POOLED：使用mybatis创建的连接池
+            2. UNPOOLED：不使用连接池，每次自己创建连接
+            3. JNDI：由服务器提供连接池的资源，我们通过JNDI指定的名字去访问服务器中资源。
+            -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--映射器-->
+    <mappers>
+        <!--
+        package表示扫描这个包下所有的映射文件
+        1. 接口与映射文件在要同一个目录下
+        2. 接口的名字与映射文件名字要相同
+        -->
+        <package name="cn.guardwhy.dao"/>
+    </mappers>
+</configuration>

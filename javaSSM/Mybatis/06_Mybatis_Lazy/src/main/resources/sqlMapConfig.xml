@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--在内部配置属性：先读取内部的属性,再读取外部的属性,外部的会覆盖内部的,最后外部的属性起作用-->
+    <properties resource="db.properties">
+        <property name="jdbc.username" value="root"/>
+        <property name="jdbc.password" value="root"/>
+    </properties>
+
+    <!--开启延迟加载-->
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
+
+    <!--定义实体类别名-->
+    <typeAliases>
+        <package name="cn.guardwhy.domain"/>
+    </typeAliases>
+
+    <!-- 一个核心配置文件，可以配置多个运行环境，default默认使用哪个运行环境 -->
+    <environments default="default">
+        <!-- 其中的一个运行环境，通过id来进行标识-->
+        <environment id="default">
+            <!--事务管理器 -->
+            <transactionManager type="JDBC"/>
+            <!--数据源 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--映射器-->
+    <mappers>
+        <package name="cn.guardwhy.dao"/>
+    </mappers>
+</configuration>
