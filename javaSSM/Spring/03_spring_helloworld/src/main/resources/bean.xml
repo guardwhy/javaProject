@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--配置service，说明：
+       标签：
+           bean：配置javaBean对象
+       属性：
+           id：bean的唯一标识名称
+           class：类的全路径信息
+       细节：默认使用无参数构造方法，创建对象
+    -->
+    <bean id="customerService" class="cn.guardwhy.service.impl.CustomerServiceImpl"></bean>
+
+    <!--配置dao-->
+    <bean id="customerDao" class="cn.guardwhy.dao.impl.CustomerDaoImpl"></bean>
+</beans>

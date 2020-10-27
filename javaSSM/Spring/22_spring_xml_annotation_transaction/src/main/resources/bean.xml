@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--配置包扫描dao/service-->
+    <context:component-scan base-package="cn.guardwhy"/>
+
+    <!--配置JdbcTemplate-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--注入数据源对象-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--配置数据源对象-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!--注入连接数据库的四个基本要素-->
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/spring"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+
+        <!--数据库连接池常用属性-->
+        <!-- 初始化连接数量 -->
+        <property name="initialSize" value="6" />
+        <!-- 最小空闲连接数 -->
+        <property name="minIdle" value="3" />
+        <!-- 最大并发连接数(最大连接池数量) -->
+        <property name="maxActive" value="50" />
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000" />
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+    </bean>
+
+    <!--spring事务管理配置步骤-->
+    <!--第一步：配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--注入数据源对象-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--第二步：开启spring对注解事务的支持 -->
+    <tx:annotation-driven/>
+</beans>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01_spring_jdbc/01_spring_jdbc.iml" filepath="$PROJECT_DIR$/01_spring_jdbc/01_spring_jdbc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02_spring_factory/02_spring_factory.iml" filepath="$PROJECT_DIR$/02_spring_factory/02_spring_factory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03_spring_helloworld/03_spring_helloworld.iml" filepath="$PROJECT_DIR$/03_spring_helloworld/03_spring_helloworld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_spring_ApplicationContext/04_spring_ApplicationContext.iml" filepath="$PROJECT_DIR$/04_spring_ApplicationContext/04_spring_ApplicationContext.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05_spring_bean/05_spring_bean.iml" filepath="$PROJECT_DIR$/05_spring_bean/05_spring_bean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_spring_DI/06_spring_DI.iml" filepath="$PROJECT_DIR$/06_spring_DI/06_spring_DI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_spring_annotation/07_spring_annotation.iml" filepath="$PROJECT_DIR$/07_spring_annotation/07_spring_annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08_spring_JdbcTemplateDemo/08_spring_JdbcTemplateDemo.iml" filepath="$PROJECT_DIR$/08_spring_JdbcTemplateDemo/08_spring_JdbcTemplateDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09_spring_JdbcTemplateCURD/09_spring_JdbcTemplateCURD.iml" filepath="$PROJECT_DIR$/09_spring_JdbcTemplateCURD/09_spring_JdbcTemplateCURD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10_spring_JdbcTemplate_c3p0/10_spring_JdbcTemplate_c3p0.iml" filepath="$PROJECT_DIR$/10_spring_JdbcTemplate_c3p0/10_spring_JdbcTemplate_c3p0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/11_spring_JdbcTemplate_druid/11_spring_JdbcTemplate_druid.iml" filepath="$PROJECT_DIR$/11_spring_JdbcTemplate_druid/11_spring_JdbcTemplate_druid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/12_spring_IOC_xml/12_spring_IOC_xml.iml" filepath="$PROJECT_DIR$/12_spring_IOC_xml/12_spring_IOC_xml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/13_spring_Ioc_xml_Annoation/13_spring_Ioc_xml_Annoation.iml" filepath="$PROJECT_DIR$/13_spring_Ioc_xml_Annoation/13_spring_Ioc_xml_Annoation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14_spring_Ioc_Annoation/14_spring_Ioc_Annoation.iml" filepath="$PROJECT_DIR$/14_spring_Ioc_Annoation/14_spring_Ioc_Annoation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/15_spring_junit_xml/15_spring_junit_xml.iml" filepath="$PROJECT_DIR$/15_spring_junit_xml/15_spring_junit_xml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/16_spring_junit_annotation/16_spring_junit_annotation.iml" filepath="$PROJECT_DIR$/16_spring_junit_annotation/16_spring_junit_annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/17_spring_aop_xml/17_spring_aop_xml.iml" filepath="$PROJECT_DIR$/17_spring_aop_xml/17_spring_aop_xml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/18_spring_aop-xml-pointcut/18_spring_aop-xml-pointcut.iml" filepath="$PROJECT_DIR$/18_spring_aop-xml-pointcut/18_spring_aop-xml-pointcut.iml" />
+      <module fileurl="file://$PROJECT_DIR$/19_spring_aop_xml_adviceType/19_spring_aop_xml_adviceType.iml" filepath="$PROJECT_DIR$/19_spring_aop_xml_adviceType/19_spring_aop_xml_adviceType.iml" />
+      <module fileurl="file://$PROJECT_DIR$/20_spring_xml_annotation/20_spring_xml_annotation.iml" filepath="$PROJECT_DIR$/20_spring_xml_annotation/20_spring_xml_annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/21_spring_xml_transaction/21_spring_xml_transaction.iml" filepath="$PROJECT_DIR$/21_spring_xml_transaction/21_spring_xml_transaction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/22_spring_xml_annotation_transaction/22_spring_xml_annotation_transaction.iml" filepath="$PROJECT_DIR$/22_spring_xml_annotation_transaction/22_spring_xml_annotation_transaction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/23_spring_annotation_transaction/23_spring_annotation_transaction.iml" filepath="$PROJECT_DIR$/23_spring_annotation_transaction/23_spring_annotation_transaction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/24_spring_transaction_programming/24_spring_transaction_programming.iml" filepath="$PROJECT_DIR$/24_spring_transaction_programming/24_spring_transaction_programming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring.iml" filepath="$PROJECT_DIR$/Spring.iml" />
+    </modules>
+  </component>
+</project>

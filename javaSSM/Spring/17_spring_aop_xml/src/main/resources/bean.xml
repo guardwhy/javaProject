@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--配置客户service-->
+    <bean id="customerService" class="cn.guardwhy.service.impl.CustomerServiceImpl"></bean>
+
+    <!--配置日志通知-->
+    <bean id="logAdvice" class="cn.guardwhy.advice.LogAdvice"></bean>
+
+    <!--第一步:通过aop:config声明aop的配置-->
+    <aop:config>
+        <!--第二步：通过aop:aspect配置切面,说明：
+            id：唯一标识名称
+            ref：指定通知bean对象的引用
+        -->
+        <aop:aspect id="logAspect" ref="logAdvice">
+            <!--第三步：通过aop:before配置前置通知,说明：
+                method：指定通知方法名称
+                pointcut-ref：指定切入点表达式
+            -->
+            <aop:before method="printLog" pointcut-ref="pt1"></aop:before>
+            <!--第四步：通过aop:pointcut配置切入点表达式,说明：
+                id：唯一标识名称
+                expression：指定切入点表达式
+                切入点表达式组成：
+                    访问修饰符  返回值  包名称  类名称  方法名称  （参数列表）
+             -->
+            <aop:pointcut id="pt1" expression="execution(public void cn.guardwhy.service.impl.CustomerServiceImpl.saveCustomer())"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

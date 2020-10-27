@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="11_spring_JdbcTemplate_druid" />
+        <module name="09_spring_JdbcTemplateCURD" />
+        <module name="16_spring_junit_annotation" />
+        <module name="14_spring_Ioc_Annoation" />
+        <module name="12_spring_IOC_xml" />
+        <module name="10_spring_JdbcTemplate_c3p0" />
+        <module name="05_spring_bean" />
+        <module name="20_spring_xml_annotation" />
+        <module name="13_spring_Ioc_xml_Annoation" />
+        <module name="02_spring_factory" />
+        <module name="03_spring_helloworld" />
+        <module name="04_spring_ApplicationContext" />
+        <module name="01_spring_jdbc" />
+        <module name="17_spring_aop_xml" />
+        <module name="15_spring_junit_xml" />
+        <module name="18_spring_aop-xml-pointcut" />
+        <module name="19_spring_aop_xml_adviceType" />
+        <module name="08_spring_JdbcTemplateDemo" />
+        <module name="22_spring_xml_annotation_transaction" />
+        <module name="24_spring_transaction_programming" />
+        <module name="23_spring_annotation_transaction" />
+        <module name="07_spring_annotation" />
+        <module name="06_spring_DI" />
+        <module name="21_spring_xml_transaction" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="01_spring_jdbc" target="1.8" />
+      <module name="02_spring_factory" target="1.8" />
+      <module name="03_spring_helloworld" target="1.8" />
+      <module name="04_spring_ApplicationContext" target="1.8" />
+      <module name="05_spring_bean" target="1.8" />
+      <module name="06_spring_DI" target="1.8" />
+      <module name="07_spring_annotation" target="1.8" />
+      <module name="08_spring_JdbcTemplateDemo" target="1.8" />
+      <module name="09_spring_JdbcTemplateCURD" target="1.8" />
+      <module name="10_spring_JdbcTemplate_c3p0" target="1.8" />
+      <module name="11_spring_JdbcTemplate_druid" target="1.8" />
+      <module name="12_spring_IOC_xml" target="1.8" />
+      <module name="13_spring_Ioc_xml_Annoation" target="1.8" />
+      <module name="14_spring_Ioc_Annoation" target="1.8" />
+      <module name="15_spring_junit_xml" target="1.8" />
+      <module name="16_spring_junit_annotation" target="1.8" />
+      <module name="17_spring_aop_xml" target="1.8" />
+      <module name="18_spring_aop-xml-pointcut" target="1.8" />
+      <module name="19_spring_aop_xml_adviceType" target="1.8" />
+      <module name="20_spring_xml_annotation" target="1.8" />
+      <module name="21_spring_xml_transaction" target="1.8" />
+      <module name="22_spring_xml_annotation_transaction" target="1.8" />
+      <module name="23_spring_annotation_transaction" target="1.8" />
+      <module name="24_spring_transaction_programming" target="1.8" />
+      <module name="Spring" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

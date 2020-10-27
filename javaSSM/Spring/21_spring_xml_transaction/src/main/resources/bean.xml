@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--配置账户service-->
+    <bean id="accountService" class="cn.guardwhy.service.impl.AccountServiceImpl">
+        <!--注入账户dao-->
+        <property name="accountDao" ref="accountDao"/>
+    </bean>
+
+    <!--配置账户dao-->
+    <bean id="accountDao" class="cn.guardwhy.dao.impl.AccountDaoImpl">
+        <!--注入JdbcTemplate-->
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!--配置JdbcTemplate-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--注入数据源对象-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--配置数据源对象-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!--注入连接数据库的四个基本要素-->
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/spring"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+
+        <!--注入连接池公共属性-->
+        <!-- 初始化连接数量 -->
+        <property name="initialSize" value="6" />
+        <!-- 最小空闲连接数 -->
+        <property name="minIdle" value="3" />
+        <!-- 最大并发连接数(最大连接池数量) -->
+        <property name="maxActive" value="50" />
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000" />
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+    </bean>
+
+    <!--配置声明式事务-->
+    <!--第一步：配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--注入数据源对象-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--第二步：配置aop和切入点表达式-->
+    <aop:config>
+        <aop:pointcut id="pt1" expression="execution(* cn.guardwhy.service..*.*(..))"></aop:pointcut>
+
+        <!--第三步：建立通知和切入点表达式的关系-->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pt1"></aop:advisor>
+    </aop:config>
+
+    <!--第四步：配置通知-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!--第五步：配置事务属性，说明：
+            name:业务方法的名称，可以使用通配符号*
+            propagation：传播行为。在实际项目中，REQUIRED：增删改;SUPPORTS：查询
+            isolation：隔离级别。在实际项目中，使用默认值即可。
+            timeout：超时。在实际项目中使用默认值即可。默认值是-1。表示永不超时
+            read-only：是否只读。在实际项目中，对应增删改：false；对应查询：true。默认值是false
+            rollback-for:当发生某种异常时，回滚。发生其他异常不要回滚。没有默认值，所有异常都回滚
+            no-rollback-for:当发生某种异常时，不回滚、发生其他异常都回滚。没有默认值，所有异常都回滚
+        -->
+        <tx:attributes>
+            <tx:method name="transfer*" propagation="REQUIRED"   read-only="false" />
+        </tx:attributes>
+    </tx:advice>
+
+</beans>

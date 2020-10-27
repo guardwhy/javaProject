@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置客户service-->
+    <bean id="customerService"  class="cn.guardwhy.service.impl.CustomerServiceImpl"></bean>
+
+    <!--配置客户dao-->
+    <bean id="customerDao" class="cn.guardwhy.dao.impl.CustomerDaoImpl"
+          scope="singleton" init-method="init" destroy-method="destroy"
+    ></bean>
+
+    <!--构造方法注入数据
+    标签：
+        constructor-arg：指定通过构造方法给成员变量赋值
+    属性：
+        index：成员变量在构造方法参数列表中的索引
+        name：成员变量的名称（与index使用一个即可，实际项目中用的更多）
+        type：成员变量的类型（默认即可）
+        value：给java简单类型成员变量赋值（八种基本类型+字符串String）
+        ref：给其他bean类型成员变量赋值
+    -->
+    <bean id="constructDao" class="cn.guardwhy.dao.impl.ConstructDaoImpl">
+        <constructor-arg index="0" name="id" type="int" value="1"></constructor-arg>
+        <constructor-arg name="name" value="kobe"></constructor-arg>
+        <constructor-arg name="age" value="18"></constructor-arg>
+        <constructor-arg name="birthday" ref="now"></constructor-arg>
+    </bean>
+
+
+    <!--set方法注入数据
+        标签：
+            property：指定通过set方法，给类的成员变量赋值
+        属性：
+            name：指定成员变量名称
+            value：给java简单类型成员变量赋值（八种基本类型+字符串String）
+            ref：给其他bean类型成员变量赋值
+    -->
+    <!--<bean id="setDao" class="cn.guardwhy.dao.impl.SetDaoImpl">
+        <property name="id" value="2" ></property>
+        <property name="name" value="Curry"></property>
+        <property name="age" value="18"></property>
+        <property name="birthday" ref="now"></property>
+    </bean>-->
+
+    <!--p名称空间注入
+        第一步：导入p名称空间
+            xmlns:p="http://www.springframework.org/schema/p"
+        第二步：
+            p:属性名称 ==>给java简单类型成员变量赋值
+            p:属性名称-ref ==>给其他bean类型成员变量赋值
+    -->
+    <bean id="pDao" class="cn.guardwhy.dao.impl.SetDaoImpl"
+        p:id="3" p:name="James" p:age="35" p:birthday-ref="now"
+    >
+    </bean>
+
+    <!--c名称空间注入，说明：
+        第一步：导入c名称空间
+            xmlns:c="http://www.springframework.org/schema/c"
+        第二步：
+            c:属性名称 ==>给java简单类型成员变量赋值
+            c:属性名称-ref ==>给其他bean类型成员变量赋值
+    -->
+    <bean id="cDao" class="cn.guardwhy.dao.impl.ConstructDaoImpl"
+        c:id="4" c:name="Rondo" c:age="21" c:birthday-ref="now"
+    >
+    </bean>
+
+    <!--配置java.util.Date-->
+    <bean id="now" class="java.util.Date"></bean>
+
+    <!--集合属性注入
+        1.List结构：
+                array/list/set
+        2.Map结构：
+                map/prop
+        3.数据结构一致，标签可以互换
+    -->
+    <bean id="CollectionDao" class="cn.guardwhy.dao.impl.CollectionDaoImpl">
+        <!--array-->
+        <property name="array">
+            <array>
+                <value>array1</value>
+                <value>array2</value>
+            </array>
+        </property>
+        <!--list-->
+        <property name="list">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+            </list>
+        </property>
+        <!--set-->
+        <property name="set">
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+            </set>
+        </property>
+
+        <!--map-->
+        <property name="map">
+            <map>
+                <entry key="map-k1" value="map-v1"></entry>
+                <entry key="map-k1" value="map-v1"></entry>
+            </map>
+        </property>
+
+        <!--prop-->
+        <property name="prop">
+            <props>
+                <prop key="prop-k1"> prop-v1</prop>
+                <prop key="prop-k1"> prop-v2</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

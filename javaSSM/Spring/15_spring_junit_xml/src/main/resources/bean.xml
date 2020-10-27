@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--配置包扫描dao/service
+        第一步：导入context名称空间和约束
+        第二步：通过<context:component-scan>标签配置包扫描，spring框架在
+        初始化IOC容器的时候，会扫描指定的包和它的子包
+    -->
+    <context:component-scan base-package="cn.guardwhy"></context:component-scan>
+
+    <!--配置JdbcTemplate-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--注入数据源对象-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--配置数据源对象(druid)-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!--注入连接数据库-->
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/spring"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+
+        <!--数据库连接池常用属性-->
+        <!--初始化连接数量-->
+        <property name="initialSize" value="6" />
+        <!-- 最小空闲连接数 -->
+        <property name="minIdle" value="3" />
+        <!-- 最大并发连接数(最大连接池数量) -->
+        <property name="maxActive" value="50" />
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000" />
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+    </bean>
+</beans>

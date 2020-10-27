@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <!--配置客户service
+            标签：
+                bean：配置javaBean对象
+            属性：
+                id：唯一标识名称
+                class：类的全路径
+            注意：默认调用类的无参数构造方法，实例化对象
+        -->
+    <bean id="customerService"  class="cn.guardwhy.service.impl.CustomerServiceImpl"></bean>
+
+        <!--配置客户dao：
+            标签：
+                bean：配置javaBean对象
+            属性：
+                id：唯一标识名称
+                class：类的全路径
+                scope：设置bean的作用范围
+                     属性取值：singleton:单例(默认值) prototype：多例
+                              init-method:执行初始化,在构造方法执行后立即执行
+                              destroy-method：执行销毁，在销毁spring容器的前执行
+
+                      注意：默认调用类的无参数构造方法，实例化对象
+        -->
+    <bean id="customerDao" class="cn.guardwhy.dao.impl.CustomerDaoImpl"
+          scope="singleton" init-method="init" destroy-method="destroy"
+    ></bean>
+
+        <!--factory-method：指定静态工厂方法
+        -->
+    <bean id="staticDao" class="cn.guardwhy.factory.StaticFactoryBean" factory-method="createCustomerDao"></bean>
+
+    <!--实例工厂方法实例化对象
+        第一步：配置静态工厂对象
+        第二步：factory-bean：指定工厂对象
+               factory-method：指定工厂方法
+    -->
+    <bean id="instanceFactory" class="cn.guardwhy.factory.InstanceFactoryBean"></bean>
+    <bean id="instanceDao" factory-bean="instanceFactory" factory-method="createCustomerDao"></bean>
+</beans>

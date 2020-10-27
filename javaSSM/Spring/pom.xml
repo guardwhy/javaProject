@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.guardwhy</groupId>
+    <artifactId>Spring</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <!--模块-->
+    <modules>
+        <module>01_spring_jdbc</module>
+        <module>02_spring_factory</module>
+        <module>03_spring_helloworld</module>
+        <module>04_spring_ApplicationContext</module>
+        <module>05_spring_bean</module>
+        <module>06_spring_DI</module>
+        <module>07_spring_annotation</module>
+        <module>08_spring_JdbcTemplateDemo</module>
+        <module>09_spring_JdbcTemplateCURD</module>
+        <module>10_spring_JdbcTemplate_c3p0</module>
+        <module>11_spring_JdbcTemplate_druid</module>
+        <module>12_spring_IOC_xml</module>
+        <module>13_spring_Ioc_xml_Annoation</module>
+        <module>14_spring_Ioc_Annoation</module>
+        <module>15_spring_junit_xml</module>
+        <module>16_spring_junit_annotation</module>
+        <module>17_spring_aop_xml</module>
+        <module>18_spring_aop-xml-pointcut</module>
+        <module>19_spring_aop_xml_adviceType</module>
+        <module>20_spring_xml_annotation</module>
+        <module>21_spring_xml_transaction</module>
+        <module>22_spring_xml_annotation_transaction</module>
+        <module>23_spring_annotation_transaction</module>
+        <module>24_spring_transaction_programming</module>
+    </modules>
+
+    <properties>
+        <!-- spring版本 -->
+        <spring.version>5.2.9.RELEASE</spring.version>
+        <!-- mysql版本 -->
+        <mysql.version>5.1.30</mysql.version>
+        <!--c3p0版本-->
+        <c3p0.version>0.9.5</c3p0.version>
+        <!--druid版本-->
+        <druid.version>1.0.29</druid.version>
+        <!--junit 版本-->
+        <junit.version>4.12</junit.version>
+        <!--aopalliance版本-->
+        <aopalliance.version>1.0</aopalliance.version>
+    </properties>
+
+    <dependencies>
+        <!--spring 版本-->
+        <dependency>
+            <groupId>org.springframework </groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- mysql数据库依赖 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <!--spring jdbc依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--c3p0 依赖-->
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
+        <!--druid依赖-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <!--spring test依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--junit依赖-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+        <!-- spring aspects依赖 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--aopalliance依赖-->
+        <dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+            <version>${aopalliance.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

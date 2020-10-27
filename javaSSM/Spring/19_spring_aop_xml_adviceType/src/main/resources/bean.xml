@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--配置客户service-->
+    <bean id="customerService" class="cn.guardwhy.service.impl.CustomerServiceImpl"/>
+
+    <!--配置日志通知-->
+    <bean id="logAdvice" class="cn.guardwhy.advice.LogAdvice"/>
+
+    <!--配置aop -->
+    <aop:config>
+        <aop:aspect id="logAspect" ref="logAdvice">
+            <!--前置通知-->
+            <aop:before method="beforeLog" pointcut-ref="pt1"/>
+            <!--后置通知-->
+            <aop:after-returning method="afterReturningLog" pointcut-ref="pt1"/>
+            <!--异常通知-->
+            <aop:after-throwing method="afterThrowingLog" pointcut-ref="pt1"/>
+            <!--最终通知-->
+            <aop:after method="afterLog" pointcut-ref="pt1"/>
+
+            <!--环绕通知-->
+            <aop:around method="aroundLog" pointcut-ref="pt1"/>
+            <!--切入点表达式-->
+            <aop:pointcut id="pt1" expression="execution(* cn.guardwhy.service..*.*(..))"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

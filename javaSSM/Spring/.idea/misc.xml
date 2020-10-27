@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/15_spring_junit_xml/pom.xml" />
+        <option value="$PROJECT_DIR$/16_spring_junit_annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/17_spring_aop_xml/pom.xml" />
+        <option value="$PROJECT_DIR$/18_spring_aop-xml-pointcut/pom.xml" />
+        <option value="$PROJECT_DIR$/19_spring_aop_xml_adviceType/pom.xml" />
+        <option value="$PROJECT_DIR$/20_spring_xml_annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/21_spring_xml_transaction/pom.xml" />
+        <option value="$PROJECT_DIR$/22_spring_xml_annotation_transaction/pom.xml" />
+        <option value="$PROJECT_DIR$/23_spring_annotation_transaction/pom.xml" />
+        <option value="$PROJECT_DIR$/24_spring_transaction_programming/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>
