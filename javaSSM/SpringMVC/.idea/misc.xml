@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/01_springMVC_servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/02_HelloSpringMVC/pom.xml" />
+        <option value="$PROJECT_DIR$/03_hellospring_annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/04_springMVC_controller/pom.xml" />
+        <option value="$PROJECT_DIR$/05_springMVC_start/pom.xml" />
+        <option value="$PROJECT_DIR$/06_springMVC_paramBind/pom.xml" />
+        <option value="$PROJECT_DIR$/07_springMVC_anno/pom.xml" />
+        <option value="$PROJECT_DIR$/08_springMVC_RestFul/pom.xml" />
+        <option value="$PROJECT_DIR$/09_springMVC_JSON/pom.xml" />
+        <option value="$PROJECT_DIR$/10_springMVC_ajax/pom.xml" />
+        <option value="$PROJECT_DIR$/11_springMVC_intercepter/pom.xml" />
+        <option value="$PROJECT_DIR$/12_springMVC_file/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
